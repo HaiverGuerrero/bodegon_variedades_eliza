@@ -1,0 +1,32 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap');
+</style>
+<div class="col-lg-6" style="font-family: 'Belanosima', sans-serif!important; font-size: 30px; text-decoration: none; color: #111fe0;">
+  VariedadesEliza
+</div>
+<h2 class="text-center" style="font-family: 'Belanosima', sans-serif!important; font-size: 30px; color: #111fe0; text-transform: uppercase;">{{titulo}}</h2>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Objeto</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Representación</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Acción</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Cambio</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">ID Usuario</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in logs %}
+      <tr>
+        <th>{{item.object_id}}</th>
+        <td>{{item.object_repr}}</td>
+        <td>{% if item.action_flag == 1%}Añadir{%elif item.action_flag == 2%}Actualizar{%else%}Eliminar{%endif%}</td>
+        <td>{{item.change_message}}</td>
+        <td>{{item.user_id}}</td>
+        <td>{{item.action_time}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+		<section class="section-intro padding-y-sm">
+			<div class="container">
+				<div class="rounded" style="
+					height: 500px;
+					background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({% static 'images/banners/3.jpg' %});
+					background-position: center center; 
+					background-size: cover;
+					background-attachment: fixed;
+					display: flex;
+					align-items: center;
+					justify-content: center">
+						<h2 id="logo" style="text-transform: uppercase; font-weight: 500; font-size: 50px; color: aliceblue;">Variedades Eliza</h2>
+					<!-- <img
+						src="{% static 'images/banners/3.jpg' %}"
+						class="rounded" style="width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 300px; width: 1180px; object-fit: contain;"
+					/> -->
+				</div>
+			</div>
+		</section>
+
+		<section class="section-name padding-y-sm">
+			<div class="container">
+				<header class="section-heading">
+					<a href="{% url 'store' %}" class="btn btn-outline-primary float-right"
+						>Ver todo</a
+					>
+					<h3 class="section-title">Productos Populares</h3>
+				</header>
+
+				<div class="row">
+					{% for product in products %}
+					<div class="col-md-3">
+						<div class="card card-product-grid">
+							<a href="{{ product.get_url }}" class="img-wrap">
+								<img src="{{product.images.url}}" />
+							</a>
+							<figcaption class="info-wrap">
+								<a href="{{ product.get_url }}" class="title"
+									>{{product.product_name}}</a
+								>
+								<div class="price mt-1">${{product.price}}</div>
+								<div class="rating-star">
+									<span>
+										<i class="fa fa-star{% if product.averageReview < 0.5 %}-o{% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+										<i class="fa fa-star{% if product.averageReview < 1.5 %}-o{% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+										<i class="fa fa-star{% if product.averageReview < 2.5 %}-o{% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+										<i class="fa fa-star{% if product.averageReview < 3.5 %}-o{% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+										<i class="fa fa-star{% if product.averageReview < 4.5 %}-o{% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+									</span>
+								</div>
+							</figcaption>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+
+		
+	</body>
+</html>
+{% endblock %}

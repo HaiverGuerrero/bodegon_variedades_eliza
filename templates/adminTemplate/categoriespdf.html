@@ -1,0 +1,24 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap');
+</style>
+<div class="col-lg-6" style="font-family: 'Belanosima', sans-serif!important; font-size: 30px; text-decoration: none; color: #111fe0;">
+  VariedadesEliza
+</div>
+<h2 class="text-center" style="font-family: 'Belanosima', sans-serif!important; font-size: 30px; color: #111fe0; text-transform: uppercase;">Categorias</h2>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Nombre Categoría</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Slug</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in queryset %}
+      <tr>
+        <th>{{item.category_name}}</th>
+        <td>{{item.slug}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>

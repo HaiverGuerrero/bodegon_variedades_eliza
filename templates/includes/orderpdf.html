@@ -1,0 +1,81 @@
+<div class="row invoice row-printable">
+    <div class="col-md-12">
+        <div class="panel panel-default plain" id="dash_0">
+          
+            <div class="panel-body p30">
+                <div class="row">
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap');
+                      </style>
+                    <div class="col-lg-6" style="font-family: 'Belanosima', sans-serif!important; font-size: 30px; text-decoration: none; color: #111fe0;">
+                            VariedadesEliza
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="invoice-from">
+                            <ul class="list-unstyled text-right">
+                                <li style="font-size: 18px; color: black;"><b><strong>Enviado a</strong></b></li>
+                                <li>{{order.full_name}}</li>
+                                <li>{{order.full_address}}</li>
+                                <li>{{order.city}}, {{order.state}}</li>
+                                <li>{{order.country}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="invoice-details mt25">
+                            <div class="well">
+                                <ul class="list-unstyled mb0">
+                                    <li><strong style="font-size: 18px; color: black;">Orden</strong> #{{order.order_number}}</li>
+                                    <li><strong style="font-size: 18px; color: black;">ID Transacción</strong> {{order.payment.payment_id}}</li>
+                                    <li><strong style="font-size: 18px; color: black;">Fecha Orden:</strong> {{order.created_at}}</li>
+                                    <li><strong style="font-size: 18px; color: black;">Estado:</strong> {{order.payment.status}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                       
+                        <div class="invoice-items">
+                            <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="per70 text-center" style="font-size: 18px; color: black;">Productos</th>
+                                            <th class="per5 text-center" style="font-size: 18px; color: black;">Cantidad</th>
+                                            <th class="per25 text-center" style="font-size: 18px; color: black;">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in order_detail %}
+                                        <tr>
+                                            <td>{{item.product.product_name}}</td>
+                                            <td class="text-center">{{item.quantity}}</td>
+                                            <td class="text-center">${{item.product_price}} USD</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="2" class="text-right" style="font-size: 18px; color: black;">Sub Total:</th>
+                                            <th class="text-center">${{subtotal}} USD</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2" class="text-right" style="font-size: 18px; color: black;">Tax:</th>
+                                            <th class="text-center">${{order.tax}} USD</th>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <th colspan="2" class="text-right" style="font-size: 18px; color: black;">Total:</th>
+                                            <th class="text-center">${{order.order_total}} USD</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="invoice-footer mt25">
+                            <p class="text-center">¡Gracias por comprar con nosotros!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

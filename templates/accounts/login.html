@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="section-conten padding-y" style="min-height:84vh">
+
+
+    {% if request.GET.command == 'verification' %}
+    <div class="container mx-auto alert alert-info text-center" role="alert" style="max-width: 800px; margin-top:100px;">
+      Te enviamos un correo de verificación a: [{{request.GET.email}}]
+      <br><br>
+      Ya estás verificado? <a href="{% url 'login' %}">Entrar</a>
+    </div>
+    {% else %}
+
+
+        <div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Iniciar sesión</h4>
+                {% include 'includes/alerts.html' %}
+          <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+              <div class="form-group">
+                 <input type="email" class="form-control" placeholder="Email Address" name="email">
+              </div> 
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" name="password">
+              </div> 
+              
+              <div class="form-group">
+                  <a href="{% url 'forgotPassword' %}" class="float-right">¿Olvidó su contraseña?</a> 
+               
+              </div> 
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block"> Entrar  </button>
+              </div>    
+          </form>
+          </div> 
+        </div> 
+    
+         <p class="text-center mt-4">¿No tiene una cuenta? <a href="{% url 'register' %}">Registrarse</a></p>
+         <br><br>
+    {% endif %}
+    
+    </section>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap');
+</style>
+<div class="col-lg-6" style="font-family: 'Belanosima', sans-serif!important; font-size: 30px; text-decoration: none; color: #111fe0;">
+  VariedadesEliza
+</div>
+<h2 class="text-center" style="font-family: 'Belanosima', sans-serif!important; font-size: 30px; color: #111fe0; text-transform: uppercase;">Usuarios</h2>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Email</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">First Name</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Last Name</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Last Login</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Date Joined</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in queryset %}
+      <tr>
+        <th>{{item.email}}</th>
+        <td>{{item.first_name}}</td>
+        <td>{{item.last_name}}</td>
+        <td>{{item.last_login}}</td>
+        <td>{{item.date_joined}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>

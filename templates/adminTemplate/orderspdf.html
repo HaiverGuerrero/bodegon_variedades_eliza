@@ -1,0 +1,38 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap');
+</style>
+<div class="col-lg-6" style="font-family: 'Belanosima', sans-serif!important; font-size: 30px; text-decoration: none; color: #111fe0;">
+  VariedadesEliza
+</div>
+<h2 class="text-center" style="font-family: 'Belanosima', sans-serif!important; font-size: 30px; color: #111fe0; text-transform: uppercase;">Ordenes</h2>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Orden</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Nombre</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Teléfono</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Email</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Ciudad</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Total</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Tax</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Status</th>
+        <th scope="col" style="color: #111fe0;; font-size: large;">Creado</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in queryset %}
+      <tr>
+        <th>{{item.order_number}}</th>
+        <td>{{item.full_name}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.city}}</td>
+        <td>{{item.order_total}}</td>
+        <td>{{item.tax}}</td>
+        <td>{{item.status}}</td>
+        <td>{{item.created_at}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
